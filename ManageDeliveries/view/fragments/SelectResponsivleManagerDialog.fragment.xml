@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Responsible Managers"
+		class="sapUiPopupWithPadding"
+		items="{serverData>/Employees}"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<StandardListItem
+            icon="{serverData>Photo}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{serverData>Id}"
+            description="{serverData>Name}"
+			 />
+	</SelectDialog>
+</core:FragmentDefinition>

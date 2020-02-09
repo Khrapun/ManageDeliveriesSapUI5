@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core" >
+    <Dialog
+            id="itemDialog"
+            title="{i18n>createItemTitle}">
+        <f:SimpleForm
+                maxContainerCols="1"
+                layout="ResponsiveGridLayout"
+                labelSpanL="12"
+                labelSpanM="12"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="1"
+                columnsM="1">
+            <f:content>
+                <Label text="{i18n>labelDialogItemName}"/>
+                <Input id="itemDelName" placeholder="{i18n>placeholderDialogItemName}" required="true" />
+
+                <Label text="{i18n>labelDialogItemQuantity}"/>
+                <Input id="itemDelQuantity" placeholder="{i18n>placeholderDialogItemQuantity}" required="true"   
+                value="{path: 'Quantity', 
+					type: 'sap.ui.model.type.Integer',
+					constraints: {
+					    minimum: 1
+					}}" 
+/>
+            </f:content>
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="{i18n>buttonSaveDialogItem}" press="onDialogCreateItemPress" />
+            <Button text="{i18n>buttonCancelDialogItem}" press="onDialogCancelItemPress" type="Reject"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

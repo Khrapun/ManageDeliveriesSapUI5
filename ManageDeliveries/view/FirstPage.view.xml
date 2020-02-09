@@ -1,0 +1,48 @@
+<mvc:View
+	controllerName="khrapun.pavel.controller.FirstPage"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:tnt="sap.tnt"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	height="100%">
+	<Panel id="headerPanel" class="sapUiNoContentPadding">
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Title text="{i18n>applicationTitle}" level="H3"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+	</Panel>
+	
+	<tnt:ToolHeader>
+		<IconTabHeader
+			id="iconTabHeader"
+			selectedKey="invalidKey"
+			select=".onSelectTab"
+			showOverflowSelectList="true"
+			backgroundDesign="Transparent"
+			mode="Inline">
+			<layoutData>
+				<OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true" />
+			</layoutData>
+			<items>
+				<IconTabFilter text="{i18n>deliveryapplicationTableName}"/>
+				<IconTabFilter text="{i18n>deliveryTableName}"/>
+			</items>
+		</IconTabHeader>
+		<ToolbarSpacer>
+			<layoutData>
+				<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="16px" />
+			</layoutData>
+		</ToolbarSpacer>
+	</tnt:ToolHeader>	
+	<Panel id="filterPanel" class="sapUiNoContentPadding">
+	
+	</Panel>	
+	
+	<Panel id="myContainer" height="100%">		
+
+	</Panel>
+
+</mvc:View>

@@ -1,0 +1,81 @@
+<mvc:View
+	controllerName="khrapun.pavel.controller.ThirdPage"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+<Page class="sapUiNoContentPadding" showHeader="false">
+	<f:SimpleForm        
+        layout="ResponsiveGridLayout"
+        labelSpanL="12"
+        labelSpanM="3"
+        emptySpanL="3"
+        emptySpanM="0"
+        columnsL="1"
+        columnsM="1">
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<FlexBox justifyContent="Center" width="100%">
+						<Label text="Fill out an application for delivery"/>
+					</FlexBox>
+				</Toolbar>
+			</f:toolbar>
+            <f:content>
+
+            <Label text="Customer ID"/>
+            <Input id="cusId" placeholder="Enter Customer ID..." value="{path: 'Name', 
+			type: 'sap.ui.model.type.Integer',
+					constraints: {
+					minimum: 0
+				}}"
+ 			/>
+
+			<Toolbar ariaLabelledBy="Title3">
+				<FlexBox justifyContent="Center" width="100%">
+					<Label text="- OR -"/>
+				</FlexBox>
+			</Toolbar>
+
+            <Label text="Name"/>
+            <Input id="cusName" placeholder="Enter Name..." value="{path: 'Name', 
+				type: 'sap.ui.model.type.String',
+				constraints: {
+				     minLength: 0
+				}}" />
+
+                <Label text="Email"/>
+                <Input  id="cusEmail" placeholder="Enter Email..." value="{Specs}" />
+
+                <Label text="Phone Number"/>
+                <Input id="cusPhone" placeholder="Enter Phone Number..." value="{Rating}" />
+
+                <Label text="industry"/>
+                <Input id="cusIndustry" placeholder="Enter industry..." value="{SupplierInfo}" />
+
+				<Toolbar ariaLabelledBy="Title3">
+					<ToolbarSpacer />
+				</Toolbar>
+
+                <Label text="From"/>
+                <Input id="delFrom" placeholder="Enter Sender Adress..." required="true" value="{MadeIn}"/>
+
+                <Label text="To"/>
+                <Input id="delTo" placeholder="Enter Distination Address..." required="true" value="{ProductionCompanyName}"/>
+
+                <Label text="Delivery Date"/>
+                <DatePicker id="delDate" placeholder="Enter Date..." required="true" value="{ProductionCompanyName}"/>
+
+                <Label text="Comment"/>
+                <Input id="delComment" placeholder="Enter Comment..." value="{ProductionCompanyName}"/>
+        </f:content>
+    </f:SimpleForm>
+
+	<Toolbar ariaLabelledBy="Title3">
+		<FlexBox justifyContent="End" width="37%">
+			<Button id="createButton" text="{i18n>createDeliveryBtn}" type="Default" press=".onOpenNavFirst" />
+		</FlexBox>
+	</Toolbar>
+	
+</Page>
+</mvc:View>

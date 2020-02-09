@@ -1,0 +1,202 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	controllerName="khrapun.pavel.controller.ThirdPage"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	height="100%">
+	<m:Page showHeader="false" showFooter="true"		
+	floatingFooter="true"
+	class="sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter">	
+	<ObjectPageLayout id="ObjectPageLayout">
+		<sections>
+			<ObjectPageSection id="section1" title="{i18n>generalInformatoinLink}">
+			<subSections>
+					<ObjectPageSubSection id="section1_SS1" title=" ">
+						<blocks>
+							<m:FlexBox
+								width="100%"
+								class="columns"
+								alignItems="Stretch">
+								<m:items>
+									<m:FlexBox
+									id="customerInformation"
+										width="50%"
+										class="columns"
+										alignItems="Stretch"
+										direction="Column">
+										<m:items>
+											<m:Label text="{i18n>deliveryApplicationGeneralCustomerId}" />
+											<m:Text id="customerId" class="column1" text="{serverData>Id}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralCustomerName}" />
+											<m:Text class="column1" text="{serverData>Name}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralCustomerEmail}" />
+											<m:Text class="column1" text="{serverData>Email}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralCustomerPhoneNumber}" />
+											<m:Text class="column1" text="{serverData>PhoneNumber}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralCustomerIndustry}" />
+											<m:Text class="column1" text="{serverData>Industry}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+										</m:items>
+									</m:FlexBox>
+									<m:FlexBox
+										id="delyveryInformation"
+										width="50%"
+										class="columns"
+										alignItems="Stretch"
+										direction="Column">
+										<m:items>
+											<m:Label text="{i18n>deliveryApplicationGeneralSenderAddress}" />
+											<m:Text id="sendAddress" class="column1" text="{serverData>FromAddress}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralDestinationAddress}" />
+											<m:Text id="destAddress" class="column1" text="{serverData>ToAddress}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+											<m:Label text="{i18n>deliveryApplicationGeneralDeliveryDate}" />
+											<m:DatePicker id="delDate" 	placeholder="{i18n>deliveryApplicationGeneralDeliveryDatePlaceholder}" required="true" value="{ProductionCompanyName}"/>
+											<m:Label text="{i18n>deliveryApplicationGeneralResponsibleManager}" />
+											<m:Input
+											id="responsibleManagerInpt"
+											type="Text"
+											placeholder="{i18n>deliveryApplicationGeneralResponsibleManagerPlaceholder}"
+											required="true"				
+											showSuggestion="true"
+											showValueHelp="true"
+											valueHelpRequest="handleValueHelp"
+											suggestionItems="{serverData>/Employees}"
+											width="50%">
+											<m:suggestionItems>
+												<core:Item text="{serverData>Name} {serverData>Id}" />
+											</m:suggestionItems>
+											</m:Input>
+
+											<m:Label text="{i18n>deliveryApplicationGeneralTransport}" />
+											<m:Select
+													id="delTransport"
+													showSecondaryValues= "true"
+													items="{
+														path: 'serverData>/Transports',
+														sorter: { path: 'Id' }
+													}"
+													width="100%">
+												<core:Item key="" text="{serverData>Name} {serverData>Id}" />
+											</m:Select>
+											<m:Label text="{i18n>deliveryApplicationGeneralPrice}" />
+											<m:Input id="delPrice" type="Text" required="true" width="50%" description="BYN" placeholder="{i18n>deliveryApplicationGeneralPricePlaceholder}"/>
+											<m:Label text="{i18n>deliveryApplicationGeneralComment}" />
+											<m:Text id="delComment" class="column1" text="{serverData>Comment}">
+												<m:layoutData>
+													<m:FlexItemData growFactor="1" />
+												</m:layoutData>
+											</m:Text>
+										</m:items>
+									</m:FlexBox>
+								</m:items>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection id="section3" title="{i18n>deliveryItemsLink}">
+				<subSections>
+					<ObjectPageSubSection id="section3_SS1" title="{i18n>deliveryItemsLink}">
+						<blocks>
+							<m:Table id="delivryItemsTable"
+									 items="{oItemsData>/data}"
+									 mode="SingleSelectLeft"
+							>
+						<m:headerToolbar>
+							<m:OverflowToolbar>
+								<m:ToolbarSpacer/>
+								<m:Button id="createCrewButton" icon="sap-icon://add" type="Transparent"
+									press=".onOpenDialogCreateDeliveryItem" />
+								<m:Button id="deliteCrewButton" icon="sap-icon://delete" type="Transparent"
+									press=".onDeleteDeliveryItem" />
+							</m:OverflowToolbar>
+						</m:headerToolbar>
+							<m:columns>
+								<m:Column id="itemName" width="12em">           
+									<m:HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<m:Text text="{i18n>deliveryApplicationTableItemName}"/>
+									</m:HBox>
+								</m:Column>
+								<m:Column id="quantity" width="12em" hAlign="End">           
+									<m:HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<m:Text text="{i18n>deliveryApplicationTableItemQuantity}"/>
+									</m:HBox>
+								</m:Column>
+							</m:columns>
+							<m:items>
+							<m:ColumnListItem
+								type="Active"
+								press=".onNavPressThird">
+								<m:cells>
+									<m:Text text="{oItemsData>Name}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<m:Text text="{oItemsData>Quantity}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+								</m:cells>
+							</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection id="section4" title="{i18n>crewLink}">
+				<subSections>
+					<ObjectPageSubSection id="section4_SS1" title="{i18n>crewLink}">
+						<blocks>
+							<m:List id="dragableList" width="200px" class="dragList" items="{materials>/}">
+								<m:items>
+										<m:StandardListItem title="hi" />
+								</m:items>
+ 						    </m:List>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		
+		</sections>
+
+	</ObjectPageLayout>
+			<m:footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button type="Emphasized" text="{i18n>saveDelivery}" press="onCreateDelivery"/>
+				<m:Button type="Default" text="{i18n>cancelDelivery}" press="onCancelDelivery"/>
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>	
+</mvc:View>

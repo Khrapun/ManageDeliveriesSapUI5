@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:tnt="sap.tnt"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+<fb:FilterBar id="filterBarDelyvery"	
+				search="onSearchApp"
+				useToolbar="false"
+	            showRestoreButton="true" >			
+			<fb:filterGroupItems>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>deliveryapplicationColumnId}" labelTooltip="Tooltip Example"  visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryAppID" placeholder="{i18n>deliveryapplicationPlaceholderId}"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>deliveryapplicationColumnSenderAddress}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryAppSendAdd" placeholder="{i18n>deliveryapplicationPlaceholderSenderAddress}"/>
+					</fb:control>
+				</fb:FilterGroupItem>	
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="D" label="{i18n>deliveryapplicationColumnDistinationAddress}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryAppDistAdd" placeholder="{i18n>deliveryapplicationPlaceholderDistinationAddress}"/>
+					</fb:control>
+				</fb:FilterGroupItem>	
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>deliveryapplicationColumnDeliveryDate}" visibleInFilterBar="true">
+					<fb:control>
+						<DatePicker id="deliveryAppDate" change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>			
+			</fb:filterGroupItems>					
+	    </fb:FilterBar>				
+</core:FragmentDefinition>

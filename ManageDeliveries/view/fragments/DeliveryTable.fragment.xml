@@ -1,0 +1,88 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout"
+        xmlns:core="sap.ui.core">
+<Table id="deliveryTable"
+							items="{JSONDeliveryModel>/Delivery}">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="{i18n>deliveryTableName}" level="H2"/>
+								<ToolbarSpacer/>
+								<Button id="createdeliveryButton" text="{i18n>createDelivery}" type="Transparent"
+									press=".onNavCreateDelivery" />
+							</OverflowToolbar>
+						</headerToolbar>
+							<columns>
+								<Column id="deliveryId" width="12em">           
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnId}"/>
+									</HBox>
+								</Column>
+								<Column id="deliverySenderAddress" minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnSenderAddress}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryDistinationAddress" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnDistinationAddress}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryDate" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnDate}"/>
+									</HBox>
+								</Column>
+								<Column id="i" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnCustomer}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryResponsibleManager" 
+									minScreenWidth="Tablet" 
+									demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnResponsibleManager}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryPrice" 
+									minScreenWidth="Tablet" 
+									demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryColumnPrice}"/>
+									</HBox>
+								</Column>
+							</columns>
+							<items>
+							<ColumnListItem
+								type="Active"
+								press=".onNavPressThird">
+								<cells>
+									<ObjectIdentifier title="{JSONDeliveryModel>Id}" class="sapMTableContentMargin" />
+									<Text text="{JSONDeliveryModel>FromAddress}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{JSONDeliveryModel>ToAddress}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{path: 'JSONDeliveryModel>DeliveryDate', 
+												formatter: '.formatter.dateConvert'
+									}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{JSONDeliveryModel>CustomerName}" />
+									<Text text="{JSONDeliveryModel>ManagerName}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<ObjectNumber number="{JSONDeliveryModel>Price}" unit="{JSONDeliveryModel>PriceCurrency}"/>
+								</cells>
+							</ColumnListItem>
+							</items>
+						</Table>
+                        </core:FragmentDefinition>

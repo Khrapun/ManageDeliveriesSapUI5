@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:tnt="sap.tnt"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+<fb:FilterBar id="filterBar"	
+				search="onSearchDel"
+				useToolbar="false" 
+	            filtersDialogClosed="onFiltersDialogClosed"
+	            showRestoreButton="true" >			
+			<fb:filterGroupItems>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>deliveryColumnId}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryID" placeholder="{i18n>deliveryPlaceholderId}"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="c" label="{i18n>deliveryColumnSenderAddress}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliverySendAdd" placeholder="{i18n>deliveryPlaceholderSenderAddress}" value="{Name}" />
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="D" label="{i18n>deliveryColumnDistinationAddress}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryDistdadress" placeholder="{i18n>deliveryPlaceholderDistinationAddress}" value="{Name}" />
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="I" label="{i18n>deliveryapplicationColumnDeliveryDate}" visibleInFilterBar="true">
+					<fb:control>
+						<DatePicker id="deliveryDatePick" change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>	
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="F" label="{i18n>deliveryColumnResponsibleManager}" labelTooltip="Tooltip Example" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="deliveryManager" placeholder="{i18n>deliveryPlaceholderResponsibleManager}"/>
+					</fb:control>
+				</fb:FilterGroupItem>			
+			</fb:filterGroupItems>					
+	    </fb:FilterBar>				
+</core:FragmentDefinition>
